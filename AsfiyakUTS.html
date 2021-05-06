@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Ubah contoh aplikasi pada contoh stemming menjadi contoh aplikasi tokenisasi</title>
+	<link rel="stylesheet" type="text/css" href="themes/metro-blue/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/mobile.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
+</head>
+<body>
+	 <div class="easyui-navpanel">
+        <header>
+            <div class="m-toolbar">
+                <font color="lime" size=6><span class="m-title">Ubah contoh aplikasi pada contoh stemming menjadi contoh aplikasi tokenisasi</span>
+            </div>
+        </header>
+        <div style="padding:0 20px; margin:20px auto;">
+            <div>
+                <input type="text" name="kalimat" id="kalimat" style="width:100%;height:38px; padding: 5px 15px; #f1f1f1; outline: none;">
+            </div>
+			<div>
+			<center><strong><font color="red" size=6><P id="inputan"></P>
+			<center><strong><font color="blue" size=6><p id="inputan_length"></p>
+			</div>
+            <div style="text-align:center;margin-top:30px">
+                <a class="easyui-linkbutton" onclick="UTS Teori bahasa Formal dan Otomata()" style="width:100%;height:25px"><font color="purple"><span style="font-size:30px">UTS Teori bahasa Formal dan Otomata</span></a>
+            </div>
+        </div>
+		<center><strong><font color="red" size=7><p id="inputan"></p></font></strong></center>
+		<center><strong><font color="green" size=6><p id="inputan_length"></p></font></strong></center>
+		<footer>
+            <div class="m-toolbar">
+                <center><strong><font color="teal" size=6><span class="m-title">---MOCH. ASFIYAK H.U_23419029---</span>
+				<div class="m-right">
+					<font color=fuchsia size=5><a href="javascript:void(0)" class="easyui-linkbutton" plain="true" outline="true" style="width:50px" onclick="reset()"> ^^^Refresh Ulang^^^ </a>
+				</div>
+			</div>
+        </footer>
+    </div>
+	<script>
+	function reset()
+	{
+		location.reload();
+		document.getElementById("inputan").innerHTML = "";
+		document.getElementById("inputan_length").innerHTML = "";
+	}
+	function tokenisasi(value) {
+                words = value.split(" ")
+                wordmap = {}
+
+                for (let i = 0; i < words.length; i++) {
+                    let currentWordCount = wordmap[words[i]];
+                    let count = currentWordCount ? currentWordCount : 0;
+                    wordmap[words[i]] = count + 1;
+                }
+                document.getElementById('inputan').innerHTML = words.join("<br />");
+                document.getElementById('inputan_length').innerHTML = `Dari Inputan Diatas Terdeteksi ada ${Object.keys(wordmap).length} kata.`;
+            }
+
+            document.getElementById('kalimat').addEventListener('keyup', event => {
+                tokenisasi(event.target.value)
+            })
+	</script>
+</body>
+</html>
